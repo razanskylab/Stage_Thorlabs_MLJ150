@@ -9,13 +9,6 @@ classdef ThorlabsLabJack < handle
 		DEVICE_MANAGER_DLL = 		'Thorlabs.MotionControl.DeviceManagerCLI.dll';
 		INTEGRATE_STEPPER_DLL = 'Thorlabs.MotionControl.IntegratedStepperMotorsCLI.dll';
 
-  	POS_RANGE = [0 50]; % [mm]
-  	VEL_RANGE = [0 5]; % [mm/s]
-  	ACC_RANGE = [0 10]; % [mm2/s]
-
-		DEFAULT_VEL = 5;            % [mm/s] Default velocity
-		DEFAULT_ACC = 2;            % [mm2/s] Default acceleration
-
   	POLLING_TIME = 250; % Default polling time
 		TIME_OUT_SETTINGS = 7000;  % [ms] Default timeout time for settings change
 		TIME_OUT_MOVE = 100000;    % [ms] Default time out time for motor move
@@ -24,6 +17,15 @@ classdef ThorlabsLabJack < handle
 		DO_AUTO_CONNECT = true;
 		DO_AUTO_HOME = true;
 		SET_DEFAULT_VEL_ACC = true;
+	end
+
+	properties (Constant, Hidden)
+  	POS_RANGE = [0 50]; % [mm]
+  	VEL_RANGE = [0 5]; % [mm/s]
+  	ACC_RANGE = [0 10]; % [mm2/s]
+
+		DEFAULT_VEL = 5;            % [mm/s] Default velocity
+		DEFAULT_ACC = 10;            % [mm2/s] Default acceleration
 	end
 
 	properties

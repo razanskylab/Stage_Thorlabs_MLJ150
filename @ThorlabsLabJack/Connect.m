@@ -14,8 +14,8 @@ function Connect(TLJ)
 
 		% CONNECT TO LAB JACK %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 		try
-		  deviceFound = strfind(serialNumbers{:},TLJ.serialNr);
-
+		  deviceFound =  any(strcmp(serialNumbers,TLJ.serialNr));
+         
 		  if deviceFound
 		    TLJ.DeviceNet = Thorlabs.MotionControl.IntegratedStepperMotorsCLI.LabJack.CreateLabJack(TLJ.serialNr);
 				fprintf('[LabJack] Device found...');

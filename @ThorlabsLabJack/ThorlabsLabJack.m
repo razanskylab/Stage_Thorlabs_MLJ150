@@ -1,4 +1,4 @@
-classdef ThorlabsLabJack < handle
+classdef ThorlabsLabJack < BaseHardwareClass
 
 	properties (Constant, Hidden)
 

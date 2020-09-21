@@ -21,6 +21,10 @@ function Connect(TLJ)
 				fprintf('[LabJack] Device found...');
 			else
 				short_warn('[LabJack] Device not found!');
+				fprintf('[LabJack] Devices available:\n');
+				fprintf('%s\n',serialNumbers{:});
+				fprintf('[LabJack] Expected: \n');
+				fprintf('%s\n',TLJ.serialNr);
 				return;
 		  end
 

@@ -12,7 +12,7 @@ classdef ThorlabsLabJack < BaseHardwareClass
   	POLLING_TIME = 250; % Default polling time
 		TIME_OUT_SETTINGS = 7000;  % [ms] Default timeout time for settings change
 		TIME_OUT_MOVE = 100000;    % [ms] Default time out time for motor move
-		DEFAUL_SERIAL_NR = '49905570';
+		DEFAUL_SERIAL_NR = '49157624';
 
 		DO_AUTO_CONNECT = true;
 		DO_AUTO_HOME = true;

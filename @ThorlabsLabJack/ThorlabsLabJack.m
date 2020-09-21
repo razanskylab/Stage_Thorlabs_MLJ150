@@ -1,34 +1,7 @@
 classdef ThorlabsLabJack < BaseHardwareClass
 
-	properties (Constant, Hidden)
-
-		% path to DLL files (edit as appropriate)
-		DLL_PATH = 'C:\Program Files\Thorlabs\Kinesis\';
-
-		% DLL files to be loaded
-		DEVICE_MANAGER_DLL = 		'Thorlabs.MotionControl.DeviceManagerCLI.dll';
-		INTEGRATE_STEPPER_DLL = 'Thorlabs.MotionControl.IntegratedStepperMotorsCLI.dll';
-
-  	POLLING_TIME = 250; % Default polling time
-		TIME_OUT_SETTINGS = 7000;  % [ms] Default timeout time for settings change
-		TIME_OUT_MOVE = 100000;    % [ms] Default time out time for motor move
-		DEFAUL_SERIAL_NR = '49157624';
-
-		DO_AUTO_CONNECT = true;
-		DO_AUTO_HOME = true;
-		SET_DEFAULT_VEL_ACC = true;
-	end
-
-	properties (Constant, Hidden)
-  	POS_RANGE = [0 50]; % [mm]
-  	VEL_RANGE = [0 5]; % [mm/s]
-  	ACC_RANGE = [0 10]; % [mm2/s]
-
-		DEFAULT_VEL = 5;            % [mm/s] Default velocity
-		DEFAULT_ACC = 10;            % [mm2/s] Default acceleration
-	end
-
 	properties
+    classId = '[Z-Stage]'; % used for VPrintF_With_ID()
 		serialNr(1,:) char = '';
 
 		pos(1,1) {mustBeNumeric};
@@ -44,6 +17,32 @@ classdef ThorlabsLabJack < BaseHardwareClass
 	properties (Dependent = true)
 		isConnected;
 		needsHoming;
+	end
+
+	properties (Constant, Hidden)
+
+		% path to DLL files (edit as appropriate)
+		DLL_PATH = 'C:\Program Files\Thorlabs\Kinesis\';
+	
+		% DLL files to be loaded
+		DEVICE_MANAGER_DLL = 		'Thorlabs.MotionControl.DeviceManagerCLI.dll';
+		INTEGRATE_STEPPER_DLL = 'Thorlabs.MotionControl.IntegratedStepperMotorsCLI.dll';
+	
+		POLLING_TIME = 250; % Default polling time
+		TIME_OUT_SETTINGS = 7000;  % [ms] Default timeout time for settings change
+		TIME_OUT_MOVE = 100000;    % [ms] Default time out time for motor move
+		DEFAUL_SERIAL_NR = '49905570';
+	
+		DO_AUTO_CONNECT = true;
+		DO_AUTO_HOME = true;
+		SET_DEFAULT_VEL_ACC = true;
+		
+		POS_RANGE = [0 50]; % [mm]
+		VEL_RANGE = [0 5]; % [mm/s]
+		ACC_RANGE = [0 10]; % [mm2/s]
+	
+		DEFAULT_VEL = 5;            % [mm/s] Default velocity
+		DEFAULT_ACC = 10;            % [mm2/s] Default acceleration
 	end
 
 	methods

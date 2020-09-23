@@ -48,7 +48,7 @@ classdef ThorlabsLabJack < BaseHardwareClass
 	methods
 		function TLJ = ThorlabsLabJack(varargin)
 			TLJ.Load_DLLs;
-			if (nargin == 1) && ischar(varargin{1})
+			if (nargin == 1) && (ischar(varargin{1}) || isstring(varargin{1}))
 				TLJ.serialNr = varargin{1};
 			else
 				TLJ.serialNr = TLJ.DEFAUL_SERIAL_NR;

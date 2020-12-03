@@ -37,28 +37,30 @@ function Connect(TLJ)
 
 			fprintf('initializing...');
 		  if ~TLJ.DeviceNet.IsSettingsInitialized() % Wait for IsSettingsInitialized via .NET interface
-	      TLJ.DeviceNet.WaitForSettingsInitialized(TLJ.TIME_OUT_SETTINGS);
+				TLJ.DeviceNet.WaitForSettingsInitialized(TLJ.TIME_OUT_SETTINGS);
 		  end
 		  if ~TLJ.DeviceNet.IsSettingsInitialized() % Cannot initialise device
-	      error('[LabJack] Unable to initialise device!');
+				short_warn('[LabJack] Unable to initialise device!');
+			else
+				TLJ.DeviceNet.StartPolling(TLJ.POLLING_TIME);   % Start polling via .NET interface
+				TLJ.DeviceNet.EnableDevice();
+				TLJ.DeviceNet.LoadMotorConfiguration(TLJ.serialNr);
+					% Initializes the current motor configuration.  This will load the
+					% settings appropriate for the motor as defined in the
+					% DeviceConfiguration settings. This should only be called once. Calling
+					% this function will ensure the configuration is setup correctly with
+					% the correct device unit converter. This call will also upload the
+					% current device settings for the device with only the specified
+					% settings prior to returning as defined by the MotorConfiguration
+					% settings
 		  end
 
-	    TLJ.DeviceNet.StartPolling(TLJ.POLLING_TIME);   % Start polling via .NET interface
-			TLJ.DeviceNet.EnableDevice();
-	    TLJ.DeviceNet.LoadMotorConfiguration(TLJ.serialNr);
-	      % Initializes the current motor configuration.  This will load the
-	      % settings appropriate for the motor as defined in the
-	      % DeviceConfiguration settings. This should only be called once. Calling
-	      % this function will ensure the configuration is setup correctly with
-	      % the correct device unit converter. This call will also upload the
-	      % current device settings for the device with only the specified
-	      % settings prior to returning as defined by the MotorConfiguration
-	      % settings
+
 
 			done();
 		catch ex
 	 		% Cannot initialise device
-		  short_warn('[LabJack] Unable to initialise device!');
-			rethrow(ex);
+			short_warn('[LabJack] Unable to connect!');
+			show_error_as_warning(ex);
 		end
 end

@@ -38,6 +38,7 @@ classdef ThorlabsLabJack < BaseHardwareClass
 		SET_DEFAULT_VEL_ACC = true;
 		
 		POS_RANGE = [0 50]; % [mm]
+		RANGE = [0 50]; % [mm]
 		VEL_RANGE = [0 5]; % [mm/s]
 		ACC_RANGE = [0 10]; % [mm2/s]
 	
